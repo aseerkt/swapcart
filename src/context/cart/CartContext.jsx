@@ -16,7 +16,7 @@ const LOCAL_KEY = 'swapcart';
 const INITIAL_STORAGE_DATA = JSON.parse(localStorage.getItem(LOCAL_KEY));
 
 const initialState = {
-  cartItems: INITIAL_STORAGE_DATA.cartItems || [],
+  cartItems: INITIAL_STORAGE_DATA?.cartItems || [],
 };
 
 export function CartProvider({ children }) {
