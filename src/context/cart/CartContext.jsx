@@ -35,10 +35,7 @@ export function CartProvider({ children }) {
     const alreadyExist = state.cartItems.some(
       (item) => item.id === itemToAdd.id
     );
-    if (!alreadyExist) {
-      dispatch(ADD_TO_CART, { ...itemToAdd, qty: 1 });
-      setMessage('Item added to cart');
-    } else setMessage('Item already exist in the cart');
+    if (!alreadyExist) dispatch(ADD_TO_CART, { ...itemToAdd, qty: 1 });
   };
 
   const removeFromCart = function (itemId) {

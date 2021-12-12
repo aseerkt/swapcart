@@ -2,9 +2,11 @@ import './Product.css';
 import { FaCartPlus } from 'react-icons/fa';
 import { useCartDispatch } from '../context/cart/CartContext';
 import { formatPrice } from '../utils';
+import { useNavigate } from 'react-router-dom';
 
-function Product({ product }) {
+function Product({ product, existInCart }) {
   const { addToCart } = useCartDispatch();
+  const navigate = useNavigate();
 
   return (
     <li className='product'>
@@ -16,9 +18,15 @@ function Product({ product }) {
         </header>
         <footer>
           <p>{formatPrice(product.price)}</p>
-          <button onClick={() => addToCart(product)} className='add-to-cart'>
+          <button
+            onClick={() => {
+              if (existInCart) navigate('/cart');
+              else addToCart(product);
+            }}
+            className='add-to-cart'
+          >
             <FaCartPlus />
-            <span>Add to Cart</span>
+            <span>{existInCart ? 'Go to cart' : 'Add to Cart'}</span>
           </button>
         </footer>
       </div>
