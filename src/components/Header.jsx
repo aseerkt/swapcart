@@ -5,6 +5,11 @@ import { useCart } from '../context/cart/CartContext';
 function Header() {
   const { cartItems } = useCart();
 
+  const cartItemsLength = cartItems.reduce(
+    (prev, curr) => (prev += !curr.saved ? curr.qty : 0),
+    0
+  );
+
   return (
     <header className='header'>
       <div className='container'>
@@ -14,7 +19,7 @@ function Header() {
         <nav>
           <Link to='/'>Products</Link>
           <Link to='/cart'>
-            Cart <span className='cart-item-count'>{cartItems.length}</span>
+            Cart <span className='cart-item-count'>{cartItemsLength}</span>
           </Link>
         </nav>
       </div>
