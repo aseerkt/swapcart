@@ -1,0 +1,29 @@
+.message-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  position: fixed;
+  bottom: -10vh;
+  left: 50%;
+  min-width: 350px;
+  transform: translateX(-50%);
+  transition: all 0.3s ease-in-out;
+  background-color: #059105;
+  border-radius: 0.3rem;
+  z-index: 20;
+  color: #f2f2f2;
+  font-weight: 600;
+  opacity: 0;
+}
+
+.message-container.show {
+  opacity: 1;
+  bottom: 2rem;
+}
+
+.times {
+  justify-self: flex-end;
+  margin-left: auto;
+  cursor: pointer;
+}
